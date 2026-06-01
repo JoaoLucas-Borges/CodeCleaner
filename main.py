@@ -4,29 +4,22 @@ import tkinter as tk
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+padroes_de_chaves = {
+    "Openai": r"sk-[a-zA-Z0-9_-]{20,}",
+    "Anthropic": r"sk-ant-[a-zA-Z0-9_-]{20,}",
+    "AWS": r"AKIA[A-Z0-9]{16}",
+    "Firebase": r"AIza[0-9A-Za-z_-]{35}",
+    "LangSmith": r"lsv2_[a-zA-Z0-9_-]{20,}"
+}
 
-APP_TITLE = os.getenv("APP_TITLE", "CodeCleaner")
-DEFAULT_DIR = os.getenv("DEFAULT_DIR", str(Path.home()))
+def procurar_chaves(caminho_arquivo):
+    with open(caminho_arquivo, "r") as arquivo:
+        for linha in arquivo:
+            for servico, padrao in padroes_de_chaves.items():
+                match = re.search(padrao, linha)
+                if match:
+                    print(f"chave do(a) {servico} encontrada!")
 
+caminho = "tests/test_main.py"
 
-def clean_code(text: str) -> str:
-    # Remove trailing whitespace from each line
-    text = re.sub(r"[ \t]+$", "", text, flags=re.MULTILINE)
-    # Collapse multiple blank lines into one
-    text = re.sub(r"\n{3,}", "\n\n", text)
-    return text.strip()
-
-
-def main():
-    root = tk.Tk()
-    root.title(APP_TITLE)
-    root.geometry("800x600")
-
-    # TODO: build UI here
-
-    root.mainloop()
-
-
-if __name__ == "__main__":
-    main()
+procurar_chaves(caminho)
