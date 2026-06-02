@@ -44,9 +44,8 @@ def limpar_arquivo(caminho_arquivo, chaves):
     if "import os" not in conteudo:
         conteudo = "import os\n" + conteudo
 
-    #Reescreve o arquivo com as chaves ocultadas
-    with open(caminho_arquivo, "w") as f:
-        f.write(conteudo)
+    with open(caminho_arquivo, "w") as arquivo_novo:
+        arquivo_novo.write(conteudo)
 
 
 chaves = procurar_chaves(caminho)
