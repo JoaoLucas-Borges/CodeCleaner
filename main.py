@@ -1,4 +1,3 @@
-import os
 import re
 import tkinter as tk
 from pathlib import Path
@@ -33,6 +32,23 @@ def procurar_chaves(caminho_arquivo):
     return chaves_encontradas
 
 
+def limpar_arquivo(caminho_arquivo, chaves):
+    with open(caminho_arquivo, "r") as arquivo:
+        conteudo = arquivo.read()
+
+    for chave in chaves:
+        padrao = r'["\']?' + re.escape(chave["valor"]) + r'["\']?'
+        conteudo = re.sub(padrao, f'os.environ.get("{chave["nome_var"]}")', conteudo)
+        print(f"{chave['nome_var']} substituída no arquivo!")
+
+    if "import os" not in conteudo:
+        conteudo = "import os\n" + conteudo
+
+    #Reescreve o arquivo com as chaves ocultadas
+    with open(caminho_arquivo, "w") as f:
+        f.write(conteudo)
+
+
 chaves = procurar_chaves(caminho)
 print("\n")
 
@@ -43,5 +59,9 @@ if chaves:
         for chave in chaves:
             arquivo_env.write(f"{chave['nome_var']}={chave['valor']}\n")
             print(f"{chave['nome_var']} do servico {chave['servico']} escrita no .env!")
+
+    print("\n")
+    limpar_arquivo(caminho, chaves)
+
 else:
     print("Não foi localizada nenhuma API KEY, finalizando...")
