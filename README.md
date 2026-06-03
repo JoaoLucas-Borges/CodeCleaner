@@ -9,3 +9,5 @@ Arquitetura + diagramas inline (você coloca as imagens direto no markdown com !
 Requisitos e instalação<br>
 Como usar<br>
 Bibliotecas<br>
+
+[Diagrama-de-arquitetura.pdf](https://github.com/user-attachments/files/28573360/Diagrama-de-arquitetura.pdf)
