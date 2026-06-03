@@ -9,5 +9,9 @@ Arquitetura + diagramas inline (você coloca as imagens direto no markdown com !
 Requisitos e instalação<br>
 Como usar<br>
 Bibliotecas<br>
+<br>
 
-[Diagrama-de-arquitetura.pdf](https://github.com/user-attachments/files/28573360/Diagrama-de-arquitetura.pdf)
+## Diagrama de Arquitetura
+<img width="1501" height="401" alt="Diagrama-de-Arquitetura drawio" src="https://github.com/user-attachments/assets/d3d28060-a3de-4ba9-b334-600052c93576" />
+
+
