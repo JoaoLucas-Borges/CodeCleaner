@@ -1,9 +1,6 @@
 import re
-import tkinter as tk
 from pathlib import Path
 from dotenv import load_dotenv
-
-caminho = "tests/test_main.py"
 
 padroes_de_chaves = {
     "Openai":    r'([A-Za-z_][A-Za-z0-9_]*)\s*=\s*["\']?(sk-[a-zA-Z0-9_-]{20,})',
@@ -44,24 +41,25 @@ def limpar_arquivo(caminho_arquivo, chaves):
     if "import os" not in conteudo:
         conteudo = "import os\n" + conteudo
 
-    #Reescreve o arquivo com as chaves ocultadas
     with open(caminho_arquivo, "w") as f:
         f.write(conteudo)
 
 
-chaves = procurar_chaves(caminho)
-print("\n")
-
-if chaves:
-    modo = "a" if Path(".env").exists() else "w"
-
-    with open(".env", modo) as arquivo_env:
-        for chave in chaves:
-            arquivo_env.write(f"{chave['nome_var']}={chave['valor']}\n")
-            print(f"{chave['nome_var']} do servico {chave['servico']} escrita no .env!")
-
+if __name__ == "__main__":
+    caminho = "tests/test_cleaner.py"
+    chaves = procurar_chaves(caminho)
     print("\n")
-    limpar_arquivo(caminho, chaves)
 
-else:
-    print("Não foi localizada nenhuma API KEY, finalizando...")
+    if chaves:
+        modo = "a" if Path(".env").exists() else "w"
+
+        with open(".env", modo) as arquivo_env:
+            for chave in chaves:
+                arquivo_env.write(f"{chave['nome_var']}={chave['valor']}\n")
+                print(f"{chave['nome_var']} do servico {chave['servico']} escrita no .env!")
+
+        print("\n")
+        limpar_arquivo(caminho, chaves)
+
+    else:
+        print("Não foi localizada nenhuma API KEY, finalizando...")
