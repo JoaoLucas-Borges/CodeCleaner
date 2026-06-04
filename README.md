@@ -14,5 +14,7 @@ Bibliotecas<br>
 ## Diagrama de Arquitetura
 <img width="1501" height="401" alt="Diagrama-de-Arquitetura drawio" src="https://github.com/user-attachments/assets/d3d28060-a3de-4ba9-b334-600052c93576" />
 <br>
+
 ## Fluxograma
-<img width="1500" height="500" alt="Fluxograma" src="https://github.com/user-attachments/assets/79f3312d-8f1f-40f6-85ce-02a2487a4023" />
+<img width="1500" height="500" alt="Fluxograma" src="https://github.com/user-attachments/assets/f07c1823-c236-45de-a526-8186b9b1615b" />
+
