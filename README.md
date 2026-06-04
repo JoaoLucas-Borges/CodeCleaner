@@ -19,3 +19,10 @@ Bibliotecas<br>
 ## Fluxograma
 <img width="1500" height="500" alt="Fluxograma" src="https://github.com/user-attachments/assets/f07c1823-c236-45de-a526-8186b9b1615b" />
 
+<br>
+
+## Diagrama de casos de uso
+<img width="1500" height="500" alt="Diagrama_de_casos_de_uso" src="https://github.com/user-attachments/assets/3f5520ae-0780-4f0f-bc92-4399e9245b08" />
+
+
+
