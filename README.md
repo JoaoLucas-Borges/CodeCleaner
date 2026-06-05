@@ -68,3 +68,21 @@ python ./app.py
 
 ## Diagrama de casos de uso 
 <img width="1500" height="500" alt="Diagrama_de_casos_de_uso" src="https://github.com/user-attachments/assets/3f5520ae-0780-4f0f-bc92-4399e9245b08" />
+
+---
+
+## Como o re identifica uma API KEY via regex
+Basicamente existe um dicionário contendo os padrões de chaves de cada serviço (No momento só estão disponíveis chaves da OpenAI, Anthropic, AWS, Firebase e LangSmith), definidos dessa forma: {"servico":"Formato da chave"}. Com base nisso, existe uma função que se chama `procurar_chaves()` onde o sistema utiliza o `re.search()` (da biblioteca re) e funciona rodando o arquivo_exposto.py + um modelo de chave do dicionário, caso o `re.search()` encontre algum termo semelhante ao modelo de chave a o código salva esse caso em uma lista de chaves encontradas com as informações de provedor, nome da variável e valor da variável(API KEY) e a função termina retornando essa lista de chaves encontradas
+
+---
+
+## Limitações:
+A ferramenta cumpre bem seu propósito, mas tem limites conhecidos:
+ 
+- Funciona apenas com arquivos `.py`
+- Detecta somente chaves dos serviços atualmente cadastrados:
+  - OpenAI
+  - Anthropic
+  - AWS
+  - Firebase
+  - LangSmith
