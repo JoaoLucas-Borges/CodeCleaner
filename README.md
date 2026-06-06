@@ -80,8 +80,27 @@ A função `procurar_chaves()` percorre esse dicionário e, para cada padrão, u
 ### Arquitetura 
 <img width="1500" height="500" alt="Diagrama_de_Arquitetura" src="https://github.com/user-attachments/assets/832d7928-e195-4316-b56c-3d7299ae9c64" />
 
+## Arquitetura
+
+O CodeCleaner segue uma arquitetura em camadas, com separação clara
+entre apresentação e lógica de negócio:
+
+- **Camada de apresentação (`app.py`)** — interface gráfica em Tkinter.
+  Responsável por receber o arquivo do usuário, acionar o processamento
+  e exibir o resultado. Não contém regra de negócio.
+
+- **Camada de lógica (`cleaner.py`)** — núcleo da ferramenta. A função
+  `procurar_chaves()` varre o conteúdo via regex contra um dicionário de
+  padrões por serviço; em seguida o código substitui cada chave por
+  `os.getenv("variavel")` e grava o arquivo limpo junto ao `.env`.
+
 ### Fluxograma
 <img width="1500" height="500" alt="Fluxograma" src="https://github.com/user-attachments/assets/f07c1823-c236-45de-a526-8186b9b1615b" />
+<br>
+**Fluxo de dados:** o usuário seleciona um arquivo `.py` → `app.py`
+repassa o conteúdo para `cleaner.py` → detecção → substituição →
+geração do arquivo limpo + `.env` → `app.py` exibe o retorno. Todo o
+processamento ocorre localmente; nenhum dado sai da máquina.
 
 ### Casos de uso
 <img width="1500" height="500" alt="Diagrama_de_casos_de_uso" src="https://github.com/user-attachments/assets/3f5520ae-0780-4f0f-bc92-4399e9245b08" />
